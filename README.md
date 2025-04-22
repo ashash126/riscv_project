@@ -1,8 +1,3 @@
-我来直接给你一份标准的 `README.md` 文件内容，适合你 **复制粘贴进 GitHub 上的新文件里**，也可以直接保存成 `README.md` 放在本地项目目录下再推送。
-
----
-
-### ✅ 你可以复制下面这段内容：
 
 ```markdown
 # RISC-V Processor Project
@@ -56,15 +51,3 @@ make
 
 本项目使用 MIT 许可证。
 ```
-
----
-
-粘贴完成后，记得用命令把它加入并提交：
-
-```bash
-git add README.md
-git commit -m "添加项目说明 README.md"
-git push
-```
-
-需要我也帮你加个 `.gitignore` 吗？把 `.out`、`.vcd`、备份文件都排除掉，那样你的仓库更清爽一些。

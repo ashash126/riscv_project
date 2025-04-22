@@ -4,30 +4,8 @@
 
 这是一个基于 RISC-V 架构的处理器设计项目，使用 Verilog HDL 实现。项目包括处理器的各个模块、测试平台以及相关的内存和指令文件。
 
-## 📁 项目结构
-
-```
-├── data_mem.txt          # 数据内存初始化文件
-├── data_mem.v            # 数据内存模块
-├── defines.v             # 宏定义文件
-├── ex_temp.v             # 执行阶段模块
-├── gen_dff.v             # 通用 D 触发器模块
-├── id_ex_temp.v          # ID/EX 阶段寄存器模块
-├── id_temp.v             # 指令译码模块
-├── if_id.v               # IF/ID 阶段寄存器模块
-├── inst_mem.txt          # 指令内存初始化文件
-├── inst_v1.txt           # 指令集文件
-├── instruction_mem.v     # 指令内存模块
-├── jump_ctrl.v           # 跳转控制模块
-├── makefile              # 编译和仿真脚本
-├── pc_reg.v              # 程序计数器模块
-├── regs_temp.v           # 寄存器堆模块
-├── tb.out                # 仿真输出文件
-├── tb_tinyriscv.v        # 测试平台
-├── tinyriscv_temp.v      # 顶层模块
-└── waveform.vcd          # 仿真波形文件
-```
-
+##📁 项目结构
+<pre> ├── <b>data_mem.txt</b> 数据内存初始化文件 ├── <b>data_mem.v</b> 数据内存模块 ├── <b>defines.v</b> 宏定义文件 ├── <b>ex_temp.v</b> 执行阶段模块 ├── <b>gen_dff.v</b> 通用 D 触发器模块 ├── <b>id_ex_temp.v</b> ID/EX 阶段寄存器模块 ├── <b>id_temp.v</b> 指令译码模块 ├── <b>if_id.v</b> IF/ID 阶段寄存器模块 ├── <b>inst_mem.txt</b> 指令内存初始化文件 ├── <b>inst_v1.txt</b> 指令集文件 ├── <b>instruction_mem.v</b> 指令内存模块 ├── <b>jump_ctrl.v</b> 跳转控制模块 ├── <b>makefile</b> 编译和仿真脚本 ├── <b>pc_reg.v</b> 程序计数器模块 ├── <b>regs_temp.v</b> 寄存器堆模块 ├── <b>tb.out</b> 仿真输出文件 ├── <b>tb_tinyriscv.v</b> 测试平台 ├── <b>tinyriscv_temp.v</b> 顶层模块 └── <b>waveform.vcd</b> 仿真波形文件 </pre>
 ## 🚀 快速开始
 
 ### 环境要求

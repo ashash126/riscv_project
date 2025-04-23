@@ -14,11 +14,14 @@ SRC = \
     instruction_mem.v \
     data_mem.v \
     if_id.v \
-    id_temp.v \
-    id_ex_temp.v \
-    ex_temp.v \
+    id.v \
+    id_ex.v \
     jump_ctrl.v \
-    regs_temp.v \
+    regs.v \
+    ex_mem.v \
+    alu.v \
+    mem_ctrl.v \
+    mem_wb.v \
     defines.v
 
 # 输出文件

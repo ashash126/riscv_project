@@ -1,4 +1,3 @@
-woshiyangyangyang
 
 ```markdown
 # RISC-V Processor Project
@@ -55,7 +54,3 @@ gtkwave waveform.vcd
 ## 📄 许可证
 
 本项目使用 MIT 许可证，详见 LICENSE 文件（如添加）。
-```
-
-
-

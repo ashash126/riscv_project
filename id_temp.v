@@ -15,33 +15,24 @@ module id(
     input wire[`RegBus] reg1_rdata_i,        // 通用寄存器1输入数据
     input wire[`RegBus] reg2_rdata_i,        // 通用寄存器2输入数据
 
-    // from csr reg
-    //input wire[`RegBus] csr_rdata_i,         // CSR寄存器输入数据
-
-    // from ex
-    input wire ex_jump_flag_i,               // 跳转标志
 
     // to regs
     output reg[`RegAddrBus] reg1_raddr_o,    // 读通用寄存器1地址
     output reg[`RegAddrBus] reg2_raddr_o,    // 读通用寄存器2地址
 
-    // to csr reg
-    //output reg[`MemAddrBus] csr_raddr_o,     // 读CSR寄存器地址
 
     // to ex
-    output reg[`MemAddrBus] op1_o,
-    output reg[`MemAddrBus] op2_o,
-    output reg[`MemAddrBus] op1_jump_o,
-    output reg[`MemAddrBus] op2_jump_o,
+    output reg[`MemAddrBus] op1_o,           // 操作数1
+    output reg[`MemAddrBus] op2_o,         // 操作数2
+    output reg[`MemAddrBus] op1_jump_o,        //基地址
+    output reg[`MemAddrBus] op2_jump_o,         //偏移量
     output reg[`InstBus] inst_o,             // 指令内容
     output reg[`InstAddrBus] inst_addr_o,    // 指令地址
     output reg[`RegBus] reg1_rdata_o,        // 通用寄存器1数据
     output reg[`RegBus] reg2_rdata_o,        // 通用寄存器2数据
     output reg reg_we_o,                     // 写通用寄存器标志
     output reg[`RegAddrBus] reg_waddr_o,    // 写通用寄存器地址
-    //output reg csr_we_o,                     // 写CSR寄存器标志
-    //output reg[`RegBus] csr_rdata_o,         // CSR寄存器数据
-    //output reg[`MemAddrBus] csr_waddr_o      // 写CSR寄存器地址
+
     output reg jump_flag,               // 跳转标志
     output reg [`InstAddrBus]jump_addr      // 跳转地址
     );
@@ -74,11 +65,6 @@ module id(
         inst_addr_o = inst_addr_i;
         reg1_rdata_o = reg1_rdata_i;
         reg2_rdata_o = reg2_rdata_i;
-        //csr_rdata_o = csr_rdata_i;
-        //csr_raddr_o = `ZeroWord;
-        //csr_waddr_o = `ZeroWord;
-        //csr_we_o = `WriteDisable;
-        op1_o = `ZeroWord;
         op2_o = `ZeroWord;
         op1_jump_o = `ZeroWord;
         op2_jump_o = `ZeroWord;
@@ -259,37 +245,6 @@ module id(
                 reg2_raddr_o = `ZeroReg;
                 op1_jump_o = inst_addr_i;
                 op2_jump_o = 32'h4;
-            end
-            `INST_CSR: begin
-                reg_we_o = `WriteDisable;
-                reg_waddr_o = `ZeroReg;
-                reg1_raddr_o = `ZeroReg;
-                reg2_raddr_o = `ZeroReg;
-                //csr_raddr_o = {20'h0, inst_i[31:20]};
-                //csr_waddr_o = {20'h0, inst_i[31:20]};
-                case (funct3)
-                    `INST_CSRRW, `INST_CSRRS, `INST_CSRRC: begin
-                        reg1_raddr_o = rs1;
-                        reg2_raddr_o = `ZeroReg;
-                        reg_we_o = `WriteEnable;
-                        reg_waddr_o = rd;
-                        //csr_we_o = `WriteEnable;
-                    end
-                    `INST_CSRRWI, `INST_CSRRSI, `INST_CSRRCI: begin
-                        reg1_raddr_o = `ZeroReg;
-                        reg2_raddr_o = `ZeroReg;
-                        reg_we_o = `WriteEnable;
-                        reg_waddr_o = rd;
-                        //csr_we_o = `WriteEnable;
-                    end
-                    default: begin
-                        reg_we_o = `WriteDisable;
-                        reg_waddr_o = `ZeroReg;
-                        reg1_raddr_o = `ZeroReg;
-                        reg2_raddr_o = `ZeroReg;
-                        //csr_we_o = `WriteDisable;
-                    end
-                endcase
             end
             default: begin
                 reg_we_o = `WriteDisable;

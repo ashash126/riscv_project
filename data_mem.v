@@ -37,4 +37,12 @@ module data_mem (
         end
     end
 
+
+genvar i;
+generate
+    for (i = 0; i < 20; i = i + 1) begin : debug_block
+        wire [31:0] debug_mem_i = mem[i];
+    end
+endgenerate
+
 endmodule

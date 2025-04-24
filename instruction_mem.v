@@ -3,14 +3,14 @@ module instruction_mem (
     output reg [31:0] instruction_o
 );
 
-    reg [31:0] instruction_mem [0:31]; // 32 x 32-bit instruction memory
+    reg [31:0] instruction_mem [0:255]; // 支持 256 条指令
 
     initial begin
          $readmemh("inst_mem.txt", instruction_mem);
     end
 
     always @(*) begin
-        instruction_o = instruction_mem[address_i[6:2]];
+        instruction_o = instruction_mem[address_i[9:2]];  // 256 条指令 => 用 8 位地址 => address[9:2]
     end
 
 endmodule

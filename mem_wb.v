@@ -16,7 +16,7 @@ module mem_wb(
 );
 
 always @(posedge clk or posedge rst) begin
-    if (rst) begin
+    if (!rst) begin
         reg_wdata_o <= `ZeroWord;
         reg_we_o    <= `WriteDisable;
         reg_waddr_o <= `ZeroReg;

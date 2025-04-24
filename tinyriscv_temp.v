@@ -264,6 +264,7 @@ module tinyriscv(
         .reg_we_i(em_reg_we_o),
         .reg_waddr_i(em_reg_waddr_o),
         .reg2_rdata_i(em_reg2_rdata_o),
+        .mem_rdata_i(data_mem_rdata_o),
         .mem_wdata_o(mc_mem_wdata_o),
         .mem_raddr_o(mc_mem_raddr_o),
         .mem_waddr_o(mc_mem_waddr_o),

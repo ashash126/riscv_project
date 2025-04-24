@@ -33,7 +33,7 @@ module ex_mem(
 );
 
 always @(posedge clk or posedge rst) begin
-    if (rst) begin
+    if (!rst) begin
         inst_o       <= `INST_NOP;
         inst_addr_o  <= `ZeroWord;
         reg_wdata_o  <= `ZeroWord;

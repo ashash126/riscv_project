@@ -17,7 +17,7 @@ module gen_pipe_dff #(
     reg[DW-1:0] qout_r;
 
     always @ (posedge clk) begin
-        if (!rst | hold_en) begin
+        if ((!rst | hold_en ) & !stall ) begin
             qout_r <= def_val;
         end 
         else if (stall) begin

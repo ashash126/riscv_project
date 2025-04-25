@@ -38,7 +38,7 @@ module tb_tinyriscv;
         rst = 1;
 
         // 模拟运行 500ns 后结束
-        #500;
+        #8000;
         $finish;
     end
 

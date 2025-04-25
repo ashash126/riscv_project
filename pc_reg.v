@@ -16,7 +16,7 @@ module pc_reg(
         if (rst == `RstEnable ) begin // 1'b0
             pc_o <= `CpuResetAddr; //  32'b0
         // 跳转
-        end else if (jump_flag_i == `JumpEnable) begin //1'b1
+        end else if (jump_flag_i == `JumpEnable & stall_i == 0) begin //1'b1
             pc_o <= jump_addr_i;
         // 暂停
         end else if (stall_i == 1) begin //3'b001

@@ -82,12 +82,38 @@ module regs(
     //end
 
 
-genvar i;
-generate
-    for (i = 0; i < 32; i = i + 1) begin : reg_debug
-        wire [31:0] reg_i = regs[i];
-    end
-endgenerate
+wire [31:0] reg_0  = regs[0];
+wire [31:0] reg_1  = regs[1];
+wire [31:0] reg_2  = regs[2];
+wire [31:0] reg_3  = regs[3];
+wire [31:0] reg_4  = regs[4];
+wire [31:0] reg_5  = regs[5];
+wire [31:0] reg_6  = regs[6];
+wire [31:0] reg_7  = regs[7];
+wire [31:0] reg_8  = regs[8];
+wire [31:0] reg_9  = regs[9];
+wire [31:0] reg_10 = regs[10];
+wire [31:0] reg_11 = regs[11];
+wire [31:0] reg_12 = regs[12];
+wire [31:0] reg_13 = regs[13];
+wire [31:0] reg_14 = regs[14];
+wire [31:0] reg_15 = regs[15];
+wire [31:0] reg_16 = regs[16];
+wire [31:0] reg_17 = regs[17];
+wire [31:0] reg_18 = regs[18];
+wire [31:0] reg_19 = regs[19];
+wire [31:0] reg_20 = regs[20];
+wire [31:0] reg_21 = regs[21];
+wire [31:0] reg_22 = regs[22];
+wire [31:0] reg_23 = regs[23];
+wire [31:0] reg_24 = regs[24];
+wire [31:0] reg_25 = regs[25];
+wire [31:0] reg_26 = regs[26];
+wire [31:0] reg_27 = regs[27];
+wire [31:0] reg_28 = regs[28];
+wire [31:0] reg_29 = regs[29];
+wire [31:0] reg_30 = regs[30];
+wire [31:0] reg_31 = regs[31];
 
 
 

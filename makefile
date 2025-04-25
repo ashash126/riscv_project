@@ -22,6 +22,8 @@ SRC = \
     alu.v \
     mem_ctrl.v \
     mem_wb.v \
+    hazard_detect_unit.v \
+    stall_control.v \
     defines.v
 
 # 输出文件

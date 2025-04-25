@@ -93,12 +93,18 @@ module tinyriscv(
     wire wb_reg_we_o;   
     wire[`RegAddrBus] wb_reg_waddr_o;
 
+    //hazard_detect_unit模块输出信号
+    wire stall_req;
+
+    //stall_control模块输出信号
+    wire stall;
+
     // pc_reg模块例化
     pc_reg u_pc_reg(
         .clk(clk),
         .rst(rst),
         .pc_o(pc_pc_o),
-        .hold_flag_i(),
+        .stall_i(stall),
         .jump_flag_i(jump_flag_o),
         .jump_addr_i(jump_addr_o)
     );
@@ -150,6 +156,7 @@ module tinyriscv(
         .rst(rst),
         .inst_i(inst_mem_inst_o),
         .inst_addr_i(pc_pc_o),
+        .stall_i(stall),
         .rst_if_id_i(rst_if_id_o),
         .inst_o(if_inst_o),
         .inst_addr_o(if_inst_addr_o)
@@ -189,6 +196,7 @@ module tinyriscv(
         .reg1_rdata_i(id_reg1_rdata_o),
         .reg2_rdata_i(id_reg2_rdata_o),
         .hold_flag_i(),
+        .stall_i(stall),
         .inst_o(ie_inst_o),
         .inst_addr_o(ie_inst_addr_o),
         .reg_we_o(ie_reg_we_o),
@@ -287,4 +295,23 @@ module tinyriscv(
         .reg_waddr_o(wb_reg_waddr_o)
     );
 
+    // hazard_detect_unit模块例化
+    hazard_detect_unit u_hazard_detect_unit(
+        .rst(rst),
+        .id_rs1(id_reg1_raddr_o),
+        .id_rs2(id_reg2_raddr_o),
+        .alu_reg_we(alu_reg_we_o),
+        .alu_reg_waddr(alu_reg_waddr_o),
+        .mem_reg_we(em_reg_we_o),
+        .mem_reg_waddr(em_reg_waddr_o),
+        .stall_req(stall_req)
+    );
+
+    // stall_control模块例化
+    stall_control u_stall_control(
+        .clk(clk),
+        .rst(rst),
+        .stall_req(stall_req),
+        .stall(stall)
+    );
 endmodule

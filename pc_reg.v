@@ -6,7 +6,7 @@ module pc_reg(
     
     input wire jump_flag_i,
     input wire [`InstAddrBus] jump_addr_i, //31:0
-    input wire [`Hold_Flag_Bus] hold_flag_i, //2:0
+    input wire stall_i, //暂停信号
 
     output reg [`InstAddrBus] pc_o
 );
@@ -19,7 +19,7 @@ module pc_reg(
         end else if (jump_flag_i == `JumpEnable) begin //1'b1
             pc_o <= jump_addr_i;
         // 暂停
-        end else if (hold_flag_i >= `Hold_Pc) begin //3'b001
+        end else if (stall_i == 1) begin //3'b001
             pc_o <= pc_o;
         // 地址加4
         end else begin

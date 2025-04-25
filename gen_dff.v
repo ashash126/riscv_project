@@ -6,6 +6,7 @@ module gen_pipe_dff #(
     input wire clk,
     input wire rst,
     input wire hold_en,
+    input wire stall,
 
     input wire[DW-1:0] def_val,
     input wire[DW-1:0] din,
@@ -18,6 +19,9 @@ module gen_pipe_dff #(
     always @ (posedge clk) begin
         if (!rst | hold_en) begin
             qout_r <= def_val;
+        end 
+        else if (stall) begin
+            qout_r <= qout_r;
         end else begin
             qout_r <= din;
         end

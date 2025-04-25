@@ -14,6 +14,7 @@ module if_id(
     //input wire[`Hold_Flag_Bus] hold_flag_i, // 流水线暂停标志
 
     input wire rst_if_id_i,             // 复位流水线寄存器信号 
+    input wire stall_i,             // 流水线暂停信号
 
     //input wire[`INT_BUS] int_flag_i,        // 外设中断输入信号
     //output wire[`INT_BUS] int_flag_o,
@@ -25,11 +26,11 @@ module if_id(
     );
 
     wire[`InstBus] inst;
-    gen_pipe_dff #(32) inst_ff(clk, rst, rst_if_id_i, `INST_NOP, inst_i, inst);// 1
+    gen_pipe_dff #(32) inst_ff(clk, rst, rst_if_id_i, stall_i ,`INST_NOP, inst_i, inst);// 1
     assign inst_o = inst;
 
     wire[`InstAddrBus] inst_addr;
-    gen_pipe_dff #(32) inst_addr_ff(clk, rst, rst_if_id_i, `ZeroWord, inst_addr_i, inst_addr); //0
+    gen_pipe_dff #(32) inst_addr_ff(clk, rst, rst_if_id_i, stall_i ,`ZeroWord, inst_addr_i, inst_addr); //0
     assign inst_addr_o = inst_addr;
 
     //wire[`INT_BUS] int_flag;

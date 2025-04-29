@@ -1,0 +1,156 @@
+Processing rv32ui-p-add_yty.txt and rv32ui-p-add.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-add_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-add.txt successfully copied to data_mem.txt
+rv32ui-p-add.txt pass
+Processing rv32ui-p-addi_yty.txt and rv32ui-p-addi.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-addi_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-addi.txt successfully copied to data_mem.txt
+rv32ui-p-addi.txt pass
+Processing rv32ui-p-and_yty.txt and rv32ui-p-and.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-and_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-and.txt successfully copied to data_mem.txt
+rv32ui-p-and.txt pass
+Processing rv32ui-p-andi_yty.txt and rv32ui-p-andi.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-andi_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-andi.txt successfully copied to data_mem.txt
+rv32ui-p-andi.txt pass
+Processing rv32ui-p-auipc_yty.txt and rv32ui-p-auipc.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-auipc_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-auipc.txt successfully copied to data_mem.txt
+rv32ui-p-auipc.txt pass
+Processing rv32ui-p-beq_yty.txt and rv32ui-p-beq.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-beq_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-beq.txt successfully copied to data_mem.txt
+rv32ui-p-beq.txt pass
+Processing rv32ui-p-bge_yty.txt and rv32ui-p-bge.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bge_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bge.txt successfully copied to data_mem.txt
+rv32ui-p-bge.txt pass
+Processing rv32ui-p-bgeu_yty.txt and rv32ui-p-bgeu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bgeu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bgeu.txt successfully copied to data_mem.txt
+rv32ui-p-bgeu.txt pass
+Processing rv32ui-p-blt_yty.txt and rv32ui-p-blt.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-blt_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-blt.txt successfully copied to data_mem.txt
+rv32ui-p-blt.txt pass
+Processing rv32ui-p-bltu_yty.txt and rv32ui-p-bltu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bltu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bltu.txt successfully copied to data_mem.txt
+rv32ui-p-bltu.txt pass
+Processing rv32ui-p-bne_yty.txt and rv32ui-p-bne.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bne_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-bne.txt successfully copied to data_mem.txt
+rv32ui-p-bne.txt pass
+Processing rv32ui-p-fence_i_yty.txt and rv32ui-p-fence_i.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-fence_i_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-fence_i.txt successfully copied to data_mem.txt
+rv32ui-p-fence_i.txt fail
+Processing rv32ui-p-jal_yty.txt and rv32ui-p-jal.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-jal_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-jal.txt successfully copied to data_mem.txt
+rv32ui-p-jal.txt pass
+Processing rv32ui-p-jalr_yty.txt and rv32ui-p-jalr.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-jalr_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-jalr.txt successfully copied to data_mem.txt
+rv32ui-p-jalr.txt pass
+Processing rv32ui-p-lb_yty.txt and rv32ui-p-lb.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lb_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lb.txt successfully copied to data_mem.txt
+rv32ui-p-lb.txt pass
+Processing rv32ui-p-lbu_yty.txt and rv32ui-p-lbu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lbu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lbu.txt successfully copied to data_mem.txt
+rv32ui-p-lbu.txt pass
+Processing rv32ui-p-lh_yty.txt and rv32ui-p-lh.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lh_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lh.txt successfully copied to data_mem.txt
+rv32ui-p-lh.txt pass
+Processing rv32ui-p-lhu_yty.txt and rv32ui-p-lhu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lhu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lhu.txt successfully copied to data_mem.txt
+rv32ui-p-lhu.txt pass
+Processing rv32ui-p-lui_yty.txt and rv32ui-p-lui.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lui_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lui.txt successfully copied to data_mem.txt
+rv32ui-p-lui.txt pass
+Processing rv32ui-p-lw_yty.txt and rv32ui-p-lw.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lw_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-lw.txt successfully copied to data_mem.txt
+rv32ui-p-lw.txt pass
+Processing rv32ui-p-or_yty.txt and rv32ui-p-or.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-or_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-or.txt successfully copied to data_mem.txt
+rv32ui-p-or.txt pass
+Processing rv32ui-p-ori_yty.txt and rv32ui-p-ori.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-ori_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-ori.txt successfully copied to data_mem.txt
+rv32ui-p-ori.txt pass
+Processing rv32ui-p-sb_yty.txt and rv32ui-p-sb.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sb_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sb.txt successfully copied to data_mem.txt
+rv32ui-p-sb.txt pass
+Processing rv32ui-p-sh_yty.txt and rv32ui-p-sh.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sh_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sh.txt successfully copied to data_mem.txt
+rv32ui-p-sh.txt pass
+Processing rv32ui-p-simple_yty.txt and rv32ui-p-simple.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-simple_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-simple.txt successfully copied to data_mem.txt
+rv32ui-p-simple.txt pass
+Processing rv32ui-p-sll_yty.txt and rv32ui-p-sll.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sll_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sll.txt successfully copied to data_mem.txt
+rv32ui-p-sll.txt pass
+Processing rv32ui-p-slli_yty.txt and rv32ui-p-slli.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slli_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slli.txt successfully copied to data_mem.txt
+rv32ui-p-slli.txt pass
+Processing rv32ui-p-slt_yty.txt and rv32ui-p-slt.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slt_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slt.txt successfully copied to data_mem.txt
+rv32ui-p-slt.txt pass
+Processing rv32ui-p-slti_yty.txt and rv32ui-p-slti.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slti_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-slti.txt successfully copied to data_mem.txt
+rv32ui-p-slti.txt pass
+Processing rv32ui-p-sltiu_yty.txt and rv32ui-p-sltiu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sltiu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sltiu.txt successfully copied to data_mem.txt
+rv32ui-p-sltiu.txt pass
+Processing rv32ui-p-sltu_yty.txt and rv32ui-p-sltu.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sltu_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sltu.txt successfully copied to data_mem.txt
+rv32ui-p-sltu.txt pass
+Processing rv32ui-p-sra_yty.txt and rv32ui-p-sra.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sra_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sra.txt successfully copied to data_mem.txt
+rv32ui-p-sra.txt pass
+Processing rv32ui-p-srai_yty.txt and rv32ui-p-srai.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srai_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srai.txt successfully copied to data_mem.txt
+rv32ui-p-srai.txt pass
+Processing rv32ui-p-srl_yty.txt and rv32ui-p-srl.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srl_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srl.txt successfully copied to data_mem.txt
+rv32ui-p-srl.txt pass
+Processing rv32ui-p-srli_yty.txt and rv32ui-p-srli.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srli_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-srli.txt successfully copied to data_mem.txt
+rv32ui-p-srli.txt pass
+Processing rv32ui-p-sub_yty.txt and rv32ui-p-sub.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sub_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sub.txt successfully copied to data_mem.txt
+rv32ui-p-sub.txt pass
+Processing rv32ui-p-sw_yty.txt and rv32ui-p-sw.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sw_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-sw.txt successfully copied to data_mem.txt
+rv32ui-p-sw.txt pass
+Processing rv32ui-p-xor_yty.txt and rv32ui-p-xor.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-xor_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-xor.txt successfully copied to data_mem.txt
+rv32ui-p-xor.txt pass
+Processing rv32ui-p-xori_yty.txt and rv32ui-p-xori.txt...
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-xori_yty.txt successfully copied to inst_mem.txt
+File d:\beida\youwenti\riscv_project\generated\rv32ui-p-xori.txt successfully copied to data_mem.txt
+rv32ui-p-xori.txt pass

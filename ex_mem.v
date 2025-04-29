@@ -18,6 +18,8 @@ module ex_mem(
 
     input wire[`RegBus] reg2_rdata_i,        // 读寄存器2数据   
 
+    input wire alu_is_load_i, // 是否是load指令
+
     output reg[`InstBus] inst_o,            // 指令内容
     output reg[`InstAddrBus] inst_addr_o,   // 指令地址
 
@@ -28,6 +30,8 @@ module ex_mem(
     output reg[`InstAddrBus]op1_add_op2_res_o, // ALU运算结果
     output reg [1:0]mem_raddr_index_o, // 读地址索引
     output reg [1:0]mem_waddr_index_o, // 写地址索引
+
+    output reg em_is_load_o, // 是否是load指令
 
     output reg[`RegBus] reg2_rdata_o        // 读寄存器2数据
 );
@@ -42,6 +46,7 @@ always @(posedge clk or posedge rst) begin
         op1_add_op2_res_o <= `ZeroWord;
         mem_raddr_index_o <= 2'b00;
         mem_waddr_index_o <= 2'b00;
+        em_is_load_o <= 1'b0;
         reg2_rdata_o <= `ZeroWord;
     end else begin
         inst_o       <= inst_i;
@@ -52,6 +57,7 @@ always @(posedge clk or posedge rst) begin
         op1_add_op2_res_o <= op1_add_op2_res_i;
         mem_raddr_index_o <= mem_raddr_index_i;
         mem_waddr_index_o <= mem_waddr_index_i;
+        em_is_load_o <= alu_is_load_i;
         reg2_rdata_o <= reg2_rdata_i;
     end
 end

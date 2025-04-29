@@ -41,8 +41,14 @@ module alu(
     output wire [`InstAddrBus] op1_add_op2_res, // 计算结果
     output wire [1:0] mem_raddr_index, // 读内存地址索引
     output wire [1:0] mem_waddr_index, // 写内存地址索引
-    output wire[`RegBus] reg2_rdata_o // 读寄存器2数据
+    output wire[`RegBus] reg2_rdata_o, // 读寄存器2数据
 
+    output reg alu_is_load, // 是否是load指令
+    output reg alu_is_store, // 是否是store指令
+    output reg alu_is_jalr, // 是否是jalr指令
+
+    output reg jump_flag,               // 跳转标志
+    output reg [`InstAddrBus]jump_addr      // 跳转地址
     );
 
     assign reg2_rdata_o = reg2_rdata_i; // 直接传递寄存器2数据
@@ -111,6 +117,105 @@ module alu(
 
     assign mem_raddr_index = (reg1_rdata_i + {{20{inst_i[31]}}, inst_i[31:20]}) & 2'b11;
     assign mem_waddr_index = (reg1_rdata_i + {{20{inst_i[31]}}, inst_i[31:25], inst_i[11:7]}) & 2'b11;
+        always @ (*) begin
+        jump_flag = `JumpDisable;
+        jump_addr = `ZeroWord;
+        case (opcode)
+            `INST_TYPE_B: begin
+                case (funct3)
+                    `INST_BEQ: begin
+                        jump_flag = op1_eq_op2 & `JumpEnable;
+                        jump_addr = {32{op1_eq_op2}} & op1_jump_add_op2_jump_res;
+                    end
+                    `INST_BNE: begin
+                        jump_flag = ~op1_eq_op2 & `JumpEnable;
+                        jump_addr = {32{~op1_eq_op2}} & op1_jump_add_op2_jump_res;
+                    end
+                    `INST_BLT: begin
+                        jump_flag = (~op1_ge_op2_signed) & `JumpEnable;
+                        jump_addr = {32{(~op1_ge_op2_signed)}} & op1_jump_add_op2_jump_res;
+                    end
+                    `INST_BGE: begin
+                        jump_flag = op1_ge_op2_signed & `JumpEnable;
+                        jump_addr = {32{(op1_ge_op2_signed)}} & op1_jump_add_op2_jump_res;
+                    end
+                    `INST_BLTU: begin
+                        jump_flag = (~op1_ge_op2_unsigned) & `JumpEnable;
+                        jump_addr = {32{(~op1_ge_op2_unsigned)}} & op1_jump_add_op2_jump_res;
+                    end
+                    `INST_BGEU: begin
+                        jump_flag = op1_ge_op2_unsigned & `JumpEnable;
+                        jump_addr = {32{(op1_ge_op2_unsigned)}} & op1_jump_add_op2_jump_res;
+                    end
+                    default: begin
+                        jump_flag = `JumpDisable;
+                        jump_addr = `ZeroWord;
+                    end
+                endcase
+            end
+            `INST_JAL, `INST_JALR: begin
+                jump_flag = `JumpEnable;
+                jump_addr = op1_jump_add_op2_jump_res;
+            end
+            default: begin
+                jump_flag = `JumpDisable;
+                jump_addr = `ZeroWord;
+            end
+        endcase
+    end
+
+// ex阶段是否是load指令
+always @(*) begin
+    case (opcode)
+        `INST_TYPE_L: begin  // load指令类型
+            case (funct3)
+                `INST_LB, `INST_LH, `INST_LW, `INST_LBU, `INST_LHU: begin
+                    alu_is_load = 1'b1;  // 这些是load指令
+                end
+                default: begin
+                    alu_is_load = 1'b0;
+                end
+            endcase
+        end
+
+        default: begin
+            alu_is_load = 1'b0;  // 其他情况默认不是
+        end
+    endcase
+end
+
+// ex阶段是否是store指令
+always @(*) begin
+    case (opcode)
+        `INST_TYPE_S: begin  // load指令类型
+            case (funct3)
+                `INST_SB, `INST_SH, `INST_SW: begin
+                    alu_is_store = 1'b1;  // 这些是load指令
+                end
+                default: begin
+                    alu_is_store = 1'b0;
+                end
+            endcase
+        end
+
+        default: begin
+            alu_is_store = 1'b0;  // 其他情况默认不是
+        end
+    endcase
+end
+
+
+// ex阶段是否是jalr指令
+always @(*) begin
+    case (opcode)
+        `INST_JALR: begin  // jalr指令类型
+            alu_is_jalr = 1'b1;  // 这些是jalr指令
+        end
+        default: begin
+            alu_is_jalr = 1'b0;  // 其他情况默认不是
+        end
+    endcase
+end    
 
     // 执行ALU功能
     always @ (*) begin
@@ -283,13 +388,21 @@ module alu(
                     reg_wdata = `ZeroWord;
                 end
             end
-            `INST_JAL, `INST_JALR: begin
+            `INST_JAL: begin
                 mem_wdata_o = `ZeroWord;
                 mem_raddr_o = `ZeroWord;
                 mem_waddr_o = `ZeroWord;
                 mem_we = `WriteDisable;
                 reg_wdata = op1_add_op2_res;
             end
+            `INST_JALR: begin
+                mem_wdata_o = `ZeroWord;
+                mem_raddr_o = `ZeroWord;
+                mem_waddr_o = `ZeroWord;
+                mem_we = `WriteDisable;
+                reg_wdata = op1_add_op2_res - 32'h8; //这是什么玩意？
+            end
+
             `INST_LUI, `INST_AUIPC: begin
                 mem_wdata_o = `ZeroWord;
                 mem_raddr_o = `ZeroWord;

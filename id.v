@@ -33,8 +33,14 @@ module id(
     output reg reg_we_o,                     // 写通用寄存器标志
     output reg[`RegAddrBus] reg_waddr_o,    // 写通用寄存器地址
 
-    output reg jump_flag,               // 跳转标志
-    output reg [`InstAddrBus]jump_addr      // 跳转地址
+
+    // to hazard_detect_unit
+    // output reg id_is_load,           // ID阶段是否是load指令
+    output wire[`RegAddrBus] id_reg1_raddr_o,    // 读通用寄存器1地址
+    output wire[`RegAddrBus] id_reg2_raddr_o    // 读通用寄存器2地址
+
+    // output reg jump_flag,               // 跳转标志
+    // output reg [`InstAddrBus]jump_addr      // 跳转地址
     );
 
     wire[6:0] opcode = inst_i[6:0];
@@ -43,6 +49,10 @@ module id(
     wire[4:0] rd = inst_i[11:7];
     wire[4:0] rs1 = inst_i[19:15];
     wire[4:0] rs2 = inst_i[24:20];
+
+    assign id_reg1_raddr_o = rs1;
+    assign id_reg2_raddr_o = rs2;
+
 
     wire[31:0] op1_add_op2_res;
     wire[31:0] op1_jump_add_op2_jump_res;
@@ -58,6 +68,36 @@ module id(
     // 无符号数比较
     assign op1_ge_op2_unsigned = op1_o >= op2_o;
     assign op1_eq_op2 = (op1_o == op2_o);
+
+// // ID阶段是否是load指令或跳转指令
+// always @(*) begin
+//     case (opcode)
+//         `INST_TYPE_L: begin  // load指令类型
+//             case (funct3)
+//                 `INST_LB, `INST_LH, `INST_LW, `INST_LBU, `INST_LHU: begin
+//                     id_is_load = 1'b1;  // 这些是load指令
+//                 end
+//                 default: begin
+//                     id_is_load = 1'b0;
+//                 end
+//             endcase
+//         end
+//         `INST_TYPE_B: begin  // 分支指令类型
+//             case (funct3)
+//                 `INST_BEQ, `INST_BNE, `INST_BLT, `INST_BGE, `INST_BLTU, `INST_BGEU: begin
+//                     id_is_load = 1'b1;  // 这些是分支指令，也需要前递
+//                 end
+//                 default: begin
+//                     id_is_load = 1'b0;
+//                 end
+//             endcase
+//         end
+//         default: begin
+//             id_is_load = 1'b0;  // 其他情况默认不是
+//         end
+//     endcase
+// end
+
 
 
     always @ (*) begin
@@ -255,51 +295,6 @@ module id(
         endcase
     end
 
-// 提前处理跳转指令
-    always @ (*) begin
-        jump_flag = `JumpDisable;
-        jump_addr = `ZeroWord;
-        case (opcode)
-            `INST_TYPE_B: begin
-                case (funct3)
-                    `INST_BEQ: begin
-                        jump_flag = op1_eq_op2 & `JumpEnable;
-                        jump_addr = {32{op1_eq_op2}} & op1_jump_add_op2_jump_res;
-                    end
-                    `INST_BNE: begin
-                        jump_flag = ~op1_eq_op2 & `JumpEnable;
-                        jump_addr = {32{~op1_eq_op2}} & op1_jump_add_op2_jump_res;
-                    end
-                    `INST_BLT: begin
-                        jump_flag = (~op1_ge_op2_signed) & `JumpEnable;
-                        jump_addr = {32{(~op1_ge_op2_signed)}} & op1_jump_add_op2_jump_res;
-                    end
-                    `INST_BGE: begin
-                        jump_flag = op1_ge_op2_signed & `JumpEnable;
-                        jump_addr = {32{(op1_ge_op2_signed)}} & op1_jump_add_op2_jump_res;
-                    end
-                    `INST_BLTU: begin
-                        jump_flag = (~op1_ge_op2_unsigned) & `JumpEnable;
-                        jump_addr = {32{(~op1_ge_op2_unsigned)}} & op1_jump_add_op2_jump_res;
-                    end
-                    `INST_BGEU: begin
-                        jump_flag = op1_ge_op2_unsigned & `JumpEnable;
-                        jump_addr = {32{(op1_ge_op2_unsigned)}} & op1_jump_add_op2_jump_res;
-                    end
-                    default: begin
-                        jump_flag = `JumpDisable;
-                        jump_addr = `ZeroWord;
-                    end
-                endcase
-            end
-            `INST_JAL, `INST_JALR: begin
-                jump_flag = `JumpEnable;
-                jump_addr = op1_jump_add_op2_jump_res;
-            end
-            default: begin
-                jump_flag = `JumpDisable;
-                jump_addr = `ZeroWord;
-            end
-        endcase
-    end
+
+
 endmodule
